@@ -1,0 +1,134 @@
+div#app {
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 100%;
+
+  @media #{$medium-up} {
+    grid-template-columns: $default-nav-size auto;
+  }
+
+  @media #{$small-only} {
+    grid-template-rows: $default-nav-size auto;
+  }
+}
+
+.block-header {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  position: relative;
+
+  & h2 {
+    font-size: $font-size-medium;
+    margin: 0;
+    font-weight: 400;
+
+    small {
+      display: block;
+      text-transform: none;
+      color: #9E9E9E;
+      line-height: 140%;
+      font-size: 75%;
+    }
+  }
+
+  &.sticky {
+    position: sticky;
+    top: 0;
+    background-color: $app-background-color;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+
+    @media #{$small-only} {
+      top: $default-nav-size;
+    }
+
+    .search {
+      display: flex;
+      min-width: 200px;
+    }
+  }
+}
+
+mat-card {
+  background: $color-light;
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+
+  &:nth-child(1) {
+    margin-top: 20px;
+  }
+
+  & + mat-card {
+    margin-top: 20px;
+  }
+
+  &:last-child {
+    margin-bottom: 20px;
+  }
+
+  .mat-card-header-text {
+    margin: 0 10px;
+  
+    h2 { font-size: $font-size-medium; }
+
+    small {
+      font-size: $font-size-small;
+      color: $color-silver-gray;
+    }
+  }
+}
+
+@mixin customize-mat-design($mat-element) {
+  @if $mat-element == 'mat-accordion' {
+    #{$mat-element} {
+      display: block;
+      border-radius: 4px;
+      background: $color-light;
+      padding: 0 16px;
+      box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+
+      &:nth-child(1) {
+        margin-top: 20px;
+      }
+    
+      & + #{$mat-element} {
+        margin-top: 20px;
+      }
+    
+      &:last-child {
+        margin-bottom: 20px;
+      }
+
+      h2 { font-size: $font-size-medium; }
+
+      mat-expansion-panel-header {
+        height: 64px !important;
+        padding: 0 !important;
+      }
+
+      .mat-expansion-panel-body {
+        padding: 0 0 16px 0;
+      }
+    }
+  }
+}
+
+@include customize-mat-design('mat-accordion');
+@include customize-mat-design('mat-button');
+
+pre[class*="language-"] {
+  overflow-x: hidden !important;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

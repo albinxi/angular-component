@@ -1,0 +1,30 @@
+<div class="tf-radio-container">
+  <input
+    [id]="uniqueId"
+    type="radio"
+    class="radio-input"
+    [checked]="checked"
+    [disabled]="disable"
+    [ngClass]="getTheme()"
+    [name]="name"
+  />
+  <label
+    class="radio-label"
+    [for]="uniqueId"
+    [class.right]="labelPosition === 'left'"
+    [class.top]="labelPosition === 'bottom'"
+    [class.bottom]="labelPosition === 'top'"
+    [class.align]="(labelPosition === 'bottom' || labelPosition === 'top') && labelAlign"
+    (click)="onClick($event)"
+  >
+    <label
+      *ngIf="label"
+      class="label-text"
+      [class.left]="labelPosition === 'left'"
+      [class.top]="labelPosition === 'top'"
+      [class.bottom]="labelPosition === 'bottom'"
+      [class.right]="labelPosition === 'right'"
+      [ngClass]="customerClass"
+    >{{label}}</label>
+  </label>
+</div>

@@ -1,0 +1,15 @@
+<button
+  class="tf-button"
+  [ngClass]="getTheme(buttonType)"
+  [disabled]="disable"
+>
+  <span
+    *ngIf="text"
+    class="button-text"
+  >{{ text }}</span>
+  <span
+    *ngIf="text"
+    class="button-overlay"
+  ></span>
+  <mat-icon *ngIf="icon">{{icon}}</mat-icon>
+</button>

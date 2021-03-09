@@ -1,0 +1,74 @@
+$default-nav-size: 60px !default; // use width in medium up screen, use height in small screen
+
+/** Direction **/
+$default-direction:  left    !default;
+$default-direction-short: l  !default;
+$default-float:      left    !default;
+$opposite-direction: right   !default;
+$opposite-direction-short: r !default;
+$opposite-float:     right   !default;
+
+/** Font icon size **/
+$icon-font-size: 25px !default;
+
+// Font Weight
+$no-weight:        0   !default;
+$weight-light:     300 !default;
+$weight-normal:    500 !default;
+$weight-semi-bold: 700 !default;
+$weight-bold:      900 !default;
+
+/** Font size **/
+$font-size-xsmall:  9px !default;
+$font-size-small:   11px !default;
+$font-size-normal:  13px !default;
+$font-size-lead:    15px !default;
+$font-size-medium:  17px !default;
+$font-size-large:   19px !default;
+$font-size-xlarge:  21px !default;
+$font-size-xxlarge: 23px !default;
+
+$default-font-size: $font-size-normal !default;
+
+// Icon Size
+$icon-size-small:   13px !default;
+$icon-size-normal:  16px !default;
+$icon-size-lead:    20px !default;
+$icon-size-medium:  24px !default;
+$icon-size-large:   30px !default;
+$icon-size-xlarge:  36px !default;
+
+// Headline Size
+$h1-font-size: 28px !default;
+$h2-font-size: 26px !default;
+$h3-font-size: 24px !default;
+$h4-font-size: 22px !default;
+$h5-font-size: 20px !default;
+$h6-font-size: 18px !default;
+
+// Global padding size
+$default-padding: 15px !default;
+
+/** Media Screen **/
+$screen: "only screen" !default;
+$screen-size-small-from:  320px;
+$screen-size-small-to:    480px;
+$screen-size-medium-from: 481px;
+$screen-size-medium-to:   736px;
+$screen-size-large-from:  737px;
+$screen-size-large-to:    1280px;
+$screen-size-wide-from:   1281px;
+
+$landscape:   "#{$screen} and (orientation: landscape)" !default;
+$portrait:    "#{$screen} and (orientation: portrait)" !default;
+
+$small-only:  "#{$screen} and (min-width: #{$screen-size-small-from}) and (max-width: #{$screen-size-small-to})" !default;
+$small-up:    "#{$screen} and (min-width: #{$screen-size-small-from})" !default;
+
+$medium-only:  "#{$screen} and (min-width: #{$screen-size-medium-from}) and (max-width: #{$screen-size-medium-to})" !default;
+$medium-up:    "#{$screen} and (min-width: #{$screen-size-medium-from})" !default;
+
+$large-only:  "#{$screen} and (min-width: #{$screen-size-large-from}) and (max-width: #{$screen-size-large-to})" !default;
+$large-up:    "#{$screen} and (min-width: #{$screen-size-large-from})" !default;
+
+$wide-only:   "#{$screen} and (min-width: #{$screen-size-wide-from})" !default;

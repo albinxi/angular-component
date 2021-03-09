@@ -1,0 +1,93 @@
+<!-- tab controls -->
+<div
+  class="tf-tab-control"
+  [ngClass]="getTheme()"
+>
+  <ul
+    class="tab-nav"
+    [class.align-right]="config?.tab?.right"
+    [class.align-center]="config?.tab?.center"
+    [class.justify]="config?.tab?.justify"
+  >
+    <li
+      *ngFor="let control of config.controls; index as ctlIndex"
+      [class.active]="activatedIndex === ctlIndex"
+    >
+      <a (click)="onClick(ctlIndex)">
+        <!-- icon before -->
+        <ng-container *ngIf="config?.icon?.before">
+          <ng-container
+            *ngTemplateOutlet="iconBefore; context: { config: config, control: control, ctlIndex: ctlIndex }"
+          ></ng-container>
+        </ng-container>
+        <!-- icon only -->
+        <ng-container *ngIf="config?.icon?.only">
+          <ng-container *ngTemplateOutlet="iconOnly; context: { config: config, ctlIndex: ctlIndex }">
+          </ng-container>
+        </ng-container>
+        <!-- icon after -->
+        <ng-container *ngIf="config?.icon?.after">
+          <ng-container
+            *ngTemplateOutlet="iconAfter; context: { config: config, control: control, ctlIndex: ctlIndex }">
+          </ng-container>
+        </ng-container>
+        <!-- text only -->
+        <ng-container *ngIf="!config?.icon">
+          <ng-container *ngTemplateOutlet="textOnly; context: { control: control }">
+          </ng-container>
+        </ng-container>
+      </a>
+    </li>
+  </ul>
+</div>
+<!-- tab content -->
+<div
+  class="tf-tab-content"
+  *ngIf="templates"
+>
+  <div
+    class="tab-pane"
+    *ngFor="let template of templates; index as tabActivatedIndex"
+    [class.active]="tabActivatedIndex === activatedIndex"
+  >
+    <ng-template [ngTemplateOutlet]="template"></ng-template>
+  </div>
+</div>
+
+<ng-template
+  #iconBefore
+  let-config="config"
+  let-control="control"
+  let-ctlIndex="ctlIndex"
+>
+  <mat-icon class="start-icon">{{config.icon.list[ctlIndex]}}</mat-icon>
+  {{ control }}
+</ng-template>
+
+<ng-template
+  #iconOnly
+  let-config="config"
+  let-ctlIndex="ctlIndex"
+>
+  <mat-icon class="only-icon">{{config.icon.list[ctlIndex]}}</mat-icon>
+</ng-template>
+
+<ng-template
+  #iconAfter
+  let-config="config"
+  let-control="control"
+  let-ctlIndex="ctlIndex"
+>
+  {{ control }}
+  <mat-icon
+    class="end-icon"
+    *ngIf="config?.icon?.after"
+  >{{config.icon.list[ctlIndex]}}</mat-icon>
+</ng-template>
+
+<ng-template
+  #textOnly
+  let-control="control"
+>
+  {{ control }}
+</ng-template>

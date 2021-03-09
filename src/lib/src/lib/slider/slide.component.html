@@ -1,0 +1,37 @@
+<div class="range-slide">
+  <label
+    *ngIf="showMin"
+    class="min-value-label"
+  > {{ min }} </label>
+  <div
+    class="slide-wrapper"
+    [ngClass]="getTheme()"
+  >
+    <input
+      type="range"
+      class="range"
+      [min]="min"
+      [max]="max"
+      (input)="onInputChange($event)"
+      [value]="value"
+      [step]="step"
+    />
+    <span
+      class="active-range"
+      [ngStyle]="activatedStyle"
+    ></span>
+    <span
+      class="thumb-label"
+      *ngIf="showThumb"
+      [ngStyle]="thumbStyle"
+    >{{ slideValue }}</span>
+  </div>
+  <label
+    *ngIf="showMax"
+    class="max-value-label"
+  > {{ max }} </label>
+  <label
+    *ngIf="showValue"
+    class="range-value"
+  > {{ slideValue }} </label>
+</div>

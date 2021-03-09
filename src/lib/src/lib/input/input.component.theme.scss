@@ -1,0 +1,174 @@
+div.tf-input {
+  position: relative;
+
+  @mixin theme-generator($childNode: null) {
+    @each $name, $value in $colors {
+      &.border-#{'' + $name} {
+        input {
+          ~ label {
+            &:after {
+              background-image: radial-gradient(circle, $value 10%, rgba(0, 0, 0, 0) 11%);
+            }
+          }
+        }
+
+        input:focus, input.active {
+          ~ label {
+            &:after {
+              background-repeat: no-repeat;
+              background-size: 1000% 1000%;
+              background-image: radial-gradient(circle, $value 10%, rgba(0, 0, 0, 0) 11%);
+            }
+          }
+        }
+      }
+
+      &.icon-#{'' + $name} {
+        mat-icon {
+          color: $value;
+        }
+      }
+  
+      &.label-#{'' + $name} {
+        label:before {
+          color: $value !important;
+        }
+      }
+
+      label.infoLabel.#{'' + $name} {
+        color: $value;
+      }
+    }
+  }
+
+  .start-icon {
+    position: absolute;
+    bottom: 5px;
+    left: -1px;
+    cursor: pointer;
+  }
+
+  .end-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 0px;
+    cursor: pointer;
+  }
+
+  input {
+		&[type="text"] {
+			display: block;
+			width: 100%;
+			height: 33px;
+			font-size: 14px;
+			line-height: 1.4;
+			color: $font-color;
+			background-color: transparent;
+			background-image: none;
+			border: none;
+			border-bottom: 1px solid $color-typography;
+      padding: 0;
+      
+			&:focus, &:active {
+				outline: none;
+				box-shadow: none;
+				color: $font-color;
+      }
+      
+			&:focus, &.active {
+				~ label {
+					&:before {
+						font-size: 12px;
+						bottom: 30px;
+						color: $color-typography;
+          }
+
+					&:after {
+						background-repeat: no-repeat;
+						background-size: 1000% 1000%;
+            background-image: radial-gradient(circle, $color-red 10%, rgba(0, 0, 0, 0) 11%);
+            transition: all .3s ease-in-out;
+					}
+				}
+      }
+
+      &:not(.active) {
+        &:not(:focus) {
+          ~ label {
+            &:after {
+              background-size: 0% 0%;
+              transition: all .3s ease-in-out;
+            }
+          }
+        }
+      }
+      
+			&:not(:placeholder-shown) {
+				~ label {
+					&:before {
+						font-size: 12px;
+						bottom: 30px;
+					}
+				}
+      }
+
+      &.start-icon-input {
+        padding-left: 30px;
+        width: calc(100% - 30px);
+      }
+
+      &.end-icon-input {
+        padding-right: 30px;
+        width: calc(100% - 30px);
+      }
+		}
+  }
+  
+	label {
+		&:before {
+			content: attr(data-label);
+			display: block;
+			position: absolute;
+			left: 0;
+			bottom: 10px;
+			transition: all .15s ease-in-out;
+    }
+    
+		&:after {
+			content: '';
+			position: absolute;
+			display: inline-flex;
+			text-decoration: none;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+      height: 1px;
+      
+      background-repeat: no-repeat;
+			background-position: 50%;			
+      background-size: 0% 0%;
+      background-image: radial-gradient(circle, $color-red 10%, rgba(0, 0, 0, 0) 11%);
+      transition: all 0.3s ease-in-out;
+		}
+  }
+
+  label.infoLabel {
+    position: absolute;
+    padding-top: 3px;
+
+    &::before, &::after {
+      content: none;
+    }
+
+    &.right { right: 0; }
+  }
+  
+  $input_settings: (
+    button-text: 'label', icon-button: 'mat-icon'
+  );
+
+  @include theme-generator($input_settings);
+}

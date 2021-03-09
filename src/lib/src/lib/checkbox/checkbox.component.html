@@ -1,0 +1,32 @@
+<div class="tf-checkbox-container">
+  <input
+    [id]="uniqueId"
+    type="checkbox"
+    class="checkbox-input"
+    [checked]="checked"
+    [(ngModel)]="state"
+    [disabled]="disable"
+    [ngClass]="getTheme()"
+  />
+  <label
+    class="checkbox-label"
+    [for]="uniqueId"
+    [class.right]="labelPosition === 'left'"
+    [class.top]="labelPosition === 'bottom'"
+    [class.bottom]="labelPosition === 'top'"
+    [class.align]="(labelPosition === 'bottom' || labelPosition === 'top') && labelAlign"
+    [class.middle]="multipleStates && middleState"
+    [class.done]="multipleStates && !middleState && totalState"
+    (click)="onClick()"
+  >
+    <label
+      *ngIf="label"
+      class="label-text"
+      [class.left]="labelPosition === 'left'"
+      [class.top]="labelPosition === 'top'"
+      [class.bottom]="labelPosition === 'bottom'"
+      [class.right]="labelPosition === 'right'"
+      [ngClass]="customerClass"
+    >{{label}}</label>
+  </label>
+</div>

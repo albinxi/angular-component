@@ -1,0 +1,42 @@
+<div class="block-header sticky">
+  <h2> Customized Theme Definition</h2>
+</div>
+
+<mat-card class="theme-example">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>Theme Overview</h2>
+      <small>Tap to see the schema apply</small>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="icon-list">
+      <div
+        *ngFor="let theme of themeList; index as fontIndex"
+        class="icon-list-item"
+        [ngClass]="theme"
+        (click)="changeTheme(theme)"
+      >
+        <div
+          class="show-detail"
+          [class.reverse]="shouldReverse(theme)"
+        >$color-{{ theme }}</div>
+        <div
+          class="show-detail hex"
+          [class.reverse]="shouldReverse(theme)"
+        >{{ getMappingHex(theme) }}</div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="theme-example image p-0">
+  <mat-card-content class="image-container p-0">
+    <input
+      type="color"
+      [value]="selectedTheme"
+    >
+    <img class="theme-image">
+  </mat-card-content>
+</mat-card>

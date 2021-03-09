@@ -1,0 +1,29 @@
+<nav
+  class="home-menu"
+  [class.active]="isActive"
+>
+  <ol>
+    <li
+      class="menu-item"
+      *ngFor="let navigationItem of currentNavigationList"
+    >
+      <a (click)="switchRoute(navigationItem.to)">
+        <label class="menu-item-hover">{{ navigationItem.label }}</label>
+      </a>
+      <ol
+        *ngIf="navigationItem.children"
+        class="home-sub-menu"
+        [ngClass]="getSplitSize(navigationItem.children)"
+      >
+        <li
+          class="menu-item"
+          *ngFor="let childItem of navigationItem.children"
+        >
+          <a (click)="switchRoute(childItem.to)">
+            <label class="menu-item-hover">{{ childItem.label }}</label>
+          </a>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>

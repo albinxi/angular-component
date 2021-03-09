@@ -1,0 +1,122 @@
+<div class="block-header sticky">
+  <h2> SCSS Variables Declaration
+    <small>Global variables for quick reference</small>
+  </h2>
+</div>
+
+<mat-card class="class-example">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>Global SCSS Variables Declaration</h2>
+      <small>Declare global variable font size</small>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="grid split-2">
+      <!-- Font size -->
+      <div class="p-l-10 p-r-10">
+        <mat-card-title>
+          <small>Font Size Declaration</small>
+        </mat-card-title>
+        <mat-card-content>
+          <div *ngFor="let font of fontConfig.list; index as fontIndex">
+            <pre><code class="language-css" [innerHTML]="generateCodeSnippet(fontConfig.prefix, font, fontConfig.range[fontIndex], 'px;')"></code></pre>
+          </div>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$default-font-size', '', '$font-size-normal', ' !default;')"></code></pre>
+        </mat-card-content>
+      </div>
+      <!-- Headline settings -->
+      <div class="p-l-10 p-r-10">
+        <mat-card-title>
+          <small>Headline Size Declaration</small>
+        </mat-card-title>
+        <mat-card-content>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$h1-font-size', '', '28px', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$h2-font-size', '', '26px', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$h3-font-size', '', '24px', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$h4-font-size', '', '22px', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$h5-font-size', '', '20px', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$h6-font-size', '', '18px', ' !default;')"></code></pre>
+        </mat-card-content>
+      </div>
+      <!-- LTR -->
+      <div class="p-l-10 p-r-10">
+        <mat-card-title>
+          <small>LTR &amp; RTL</small>
+        </mat-card-title>
+        <mat-card-content>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet(directionConfig.scss.left, '', 'left', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet(directionConfig.scss.short.left, '', 'l', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet(directionConfig.scss.right, '', 'right', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet(directionConfig.scss.short.right, '', 'r', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet(directionConfig.scss.float.left, '', 'left', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet(directionConfig.scss.float.right, '', 'right', ' !default;')"></code></pre>
+        </mat-card-content>
+        <mat-card-title>
+          <small>Usage Example:</small>
+        </mat-card-title>
+        <mat-card-content>
+          <pre><code class="language-css" [innerHTML]="generateFormatCSS('.example-class',
+                                [{ 'position': 'absolute;' },
+                                 { '// WARNING':'avoid directly use left or right' },
+                                 { '#{$default-direction}': '10px;' },
+                                 { 'text-align': '#{$default-direction};' }
+                                ])"></code></pre>
+        </mat-card-content>
+      </div>
+      <!-- Media Screen -->
+      <div class="p-l-10 p-r-10">
+        <mat-card-title>
+          <small>Media Screen Declaration</small>
+        </mat-card-title>
+        <mat-card-content>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$screen', '', '\'only screen\'', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$screen-size-small-from', '', '320px', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$screen-size-small-to', '', '480px', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$screen-size-medium-from', '', '481px', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$screen-size-medium-to', '', '736px', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$screen-size-large-from', '', '737px', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$screen-size-large-to', '', '1280px', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$screen-size-wide-from', '', '1281px', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$landscape', '', '\'#{$screen} and (orientation: landscape)\'', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$portrait', '', '\'#{$screen} and (orientation: portrait)\'', ' !default;')"></code></pre>
+        </mat-card-content>
+      </div>
+
+    </div>
+    <div class="grid">
+      <div class="p-r-30">
+        <mat-card-title>
+          <small>Media Size Variable Declaration</small>
+        </mat-card-title>
+        <mat-card-content>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$small-only', '', '\'#{$screen} and (min-width: #{$screen-size-small-from}) and (max-width: #{$screen-size-small-to})\'', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$small-up', '', '\'#{$screen} and (min-width: #{$screen-size-small-from})\'', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$medium-only', '', '\'#{$screen} and (min-width: #{$screen-size-medium-from}) and (max-width: #{$screen-size-medium-to})\'', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$medium-up', '', '\'#{$screen} and (min-width: #{$screen-size-medium-from})\'', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$large-only', '', '\'#{$screen} and (min-width: #{$screen-size-large-from}) and (max-width: #{$screen-size-large-to})\'', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$large-up', '', '\'#{$screen} and (min-width: #{$screen-size-large-from})\'', ' !default;')"></code></pre>
+          <pre><code class="language-css" [innerHTML]="generateCodeSnippet('$wide-only', '', '\'#{$screen} and (min-width: #{$screen-size-wide-from})\'', ' !default;')"></code></pre>
+        </mat-card-content>
+        <mat-card-title>
+          <small>Usage Example:</small>
+        </mat-card-title>
+        <mat-card-content>
+          <pre><code class="language-css" [innerHTML]="generateFormatCSS('@media #{$small-only}',
+                                                    [{ 'width': '50%;' },
+                                                     { 'text-align': '#{$default-direction};' }
+                                                    ])"></code></pre>
+          <div class="grid split-3 g-10 g-r-5">
+            <pre><code class="language-css" [innerHTML]="pureString('@media #{$small-only}')"></code></pre>
+            <pre><code class="language-css" [innerHTML]="pureString('@media #{$small-up}')"></code></pre>
+            <pre><code class="language-css" [innerHTML]="pureString('@media #{$medium-only}')"></code></pre>
+            <pre><code class="language-css" [innerHTML]="pureString('@media #{$medium-up}')"></code></pre>
+            <pre><code class="language-css" [innerHTML]="pureString('@media #{$large-only}')"></code></pre>
+            <pre><code class="language-css" [innerHTML]="pureString('@media #{$large-up}')"></code></pre>
+            <pre><code class="language-css" [innerHTML]="pureString('@media #{$wide-only}')"></code></pre>
+          </div>
+        </mat-card-content>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

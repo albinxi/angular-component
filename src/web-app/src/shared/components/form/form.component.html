@@ -1,0 +1,156 @@
+<div class="block-header sticky">
+  <h2> Material Widgets
+    <small>Click accordion to view details</small>
+  </h2>
+</div>
+
+<!-- Theme -->
+<mat-accordion>
+  <mat-expansion-panel
+    hideToggle
+    [expanded]="getState('theme')"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h2> Theme </h2>
+      </mat-panel-title>
+      <mat-panel-description>theme.ts</mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="panel-body">
+      <section class="example-section">
+        <div class="example-content-row grid-row split-3">
+          <pre><code class="language-javascript" [innerHTML]='theme_enum'></code></pre>
+          <pre><code class="language-javascript" [innerHTML]='theme_type'></code></pre>
+          <pre><code class="language-javascript" [innerHTML]='theme_list'></code></pre>
+        </div>
+      </section>
+    </div>
+  </mat-expansion-panel>
+
+  <!-- Button -->
+  <mat-expansion-panel
+    hideToggle
+    [expanded]="getState('button')"
+    (opened)="activeState('button')"
+    (closed)="inactiveState('button')"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h2> Button </h2>
+      </mat-panel-title>
+      <mat-panel-description>button.component.ts</mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="panel-body">
+      <tf-button-example *ngIf="getState('button')"></tf-button-example>
+    </div>
+  </mat-expansion-panel>
+
+  <!-- Input -->
+  <mat-expansion-panel
+    hideToggle
+    [expanded]="getState('input')"
+    (opened)="activeState('input')"
+    (closed)="inactiveState('input')"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h2> Input </h2>
+      </mat-panel-title>
+      <mat-panel-description>input.component.ts</mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="panel-body">
+      <tf-input-example *ngIf="getState('input')"></tf-input-example>
+    </div>
+  </mat-expansion-panel>
+
+  <!-- Tab -->
+  <mat-expansion-panel
+    hideToggle
+    [expanded]="getState('tab')"
+    (opened)="activeState('tab')"
+    (closed)="inactiveState('tab')"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h2> Tab </h2>
+      </mat-panel-title>
+      <mat-panel-description>tab.component.ts</mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <tf-tab-example *ngIf="getState('tab')"></tf-tab-example>
+    </div>
+  </mat-expansion-panel>
+
+  <!-- Range Slide -->
+  <mat-expansion-panel
+    hideToggle
+    [expanded]="getState('slide')"
+    (opened)="activeState('slide')"
+    (closed)="inactiveState('slide')"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h2> Range Slide </h2>
+      </mat-panel-title>
+      <mat-panel-description>slide.component.ts</mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <tf-range-slide-example *ngIf="getState('slide')"></tf-range-slide-example>
+    </div>
+  </mat-expansion-panel>
+
+  <!-- Loading Spinner -->
+  <mat-expansion-panel
+    hideToggle
+    [expanded]="getState('spinner')"
+    (opened)="activeState('spinner')"
+    (closed)="inactiveState('spinner')"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h2> Loading Spinner </h2>
+      </mat-panel-title>
+      <mat-panel-description>spinner.component.ts</mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <tf-spinner-example *ngIf="getState('spinner')"></tf-spinner-example>
+    </div>
+  </mat-expansion-panel>
+
+  <!-- Checkbox -->
+  <mat-expansion-panel
+    hideToggle
+    [expanded]="getState('checkbox')"
+    (opened)="activeState('checkbox')"
+    (closed)="inactiveState('checkbox')"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h2> Checkbox </h2>
+      </mat-panel-title>
+      <mat-panel-description>checkbox.component.ts</mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <tf-checkbox-example *ngIf="getState('checkbox')"></tf-checkbox-example>
+    </div>
+  </mat-expansion-panel>
+
+  <!-- Radio -->
+  <mat-expansion-panel
+    hideToggle
+    [expanded]="getState('radio')"
+    (opened)="activeState('radio')"
+    (closed)="inactiveState('radio')"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h2> Radio </h2>
+      </mat-panel-title>
+      <mat-panel-description>radio.component.ts</mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <tf-radio-example *ngIf="getState('radio')"></tf-radio-example>
+    </div>
+  </mat-expansion-panel>
+
+</mat-accordion>

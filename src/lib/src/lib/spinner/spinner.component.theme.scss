@@ -1,0 +1,280 @@
+tf-spinner {
+  display: inline-block;
+  width: 40px;
+  --container-width: 40px;
+  height: 40px;
+  --container-height: 40px;
+
+  @mixin theme-generator($childNode: null) {
+    @each $name, $value in $colors {
+      &.circle, &.default {
+        &.#{'' + $name} {
+          border-top: solid $value var(--circle-border-size);
+          border-left: solid $value var(--circle-border-size);
+        }
+      }
+
+      &.ellipse {
+        &.#{'' + $name} {
+          .ellipse-dot {
+            background-color: $value;
+            border-color: $value;
+          }
+        }
+      }
+
+      &.dot {
+        &.#{'' + $name} {
+          &:not(.ring) {
+            &:before, &:after {
+              background-color: $value;
+            }
+
+            span {
+              &:before, &:after {
+                background-color: $value;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @mixin theme-generator-material() {
+    @each $name, $value in $colors {
+      &.#{'' + $name} .path {
+        stroke: $value;
+      }
+    }
+  }
+
+  @mixin animation($animation-speed: 1000ms, $delay: 0ms) {
+    animation: ellipseAnimation $animation-speed ease infinite $delay;
+  }
+
+  @keyframes circleAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes ellipseAnimation {
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes circleDotAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dotAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .tf-loader-container {
+    --default-circle-size: 34px;
+    --small-circle-size: 24px;
+    --large-circle-size: 44px;
+    --circle-border-size: 3px;
+
+    --default-dot-circle: 40px;
+    --default-dot-size: 6px;
+
+    display: block;
+    height: inherit;
+    width: inherit;
+    position: relative;
+
+    .tf-loader {
+      position: relative;
+      width: var(--default-circle-size);
+      height: var(--default-circle-size);
+
+      &.circle, &.default {
+        border-radius: 50%;
+        border: solid transparent var(--circle-border-size);
+        border-top: solid #fff var(--circle-border-size);
+        border-left: solid #fff var(--circle-border-size);
+        animation: circleAnimation 1s linear infinite;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      &.ellipse {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        width: fit-content;
+        height: var(--container-height);
+        position: absolute;
+        align-content: center;
+        $dot-size: 8px;
+        $animation-speed: 1000ms;
+
+        .ellipse-dot {
+          width: $dot-size;
+          height: $dot-size;
+          background-color: white;
+          border-radius: 50%;
+          margin: 2px;
+          transform: scale(1);
+
+          @include animation();
+
+          &:nth-child(2) {
+            @include animation($animation-speed, $animation-speed * 0.3);
+          }
+
+          &:nth-child(3) {
+            @include animation($animation-speed, $animation-speed * 0.6);
+          }
+        }
+      }
+
+      &.dot {
+        &:not(.ring) {
+          height: var(--default-dot-circle);
+          width: var(--default-dot-circle);
+          border-radius: 50%;
+          animation: circleDotAnimation 1s linear infinite;
+          margin-left: auto;
+          margin-right: auto;
+
+          &:before {
+            content: "";
+            height: var(--default-dot-size);
+            width: var(--default-dot-size);
+            background-color: white;
+            opacity: 1;
+            position: absolute;
+            top: 0px;
+            left: calc(50% - 3px);
+            border-radius: 50%;
+          }
+
+          &:after {
+            content: "";
+            height: var(--default-dot-size);
+            width: var(--default-dot-size);
+            background-color: white;
+            opacity: 0.75;
+            position: absolute;
+            top: 3px;
+            left: 7px;
+            border-radius: 50%;
+          }
+
+          span {
+            &:before {
+              content: "";
+              position: absolute;
+              top: 11px;
+              left: 1px;
+              width: var(--default-dot-size);
+              height: var(--default-dot-size);
+              background-color: white;
+              opacity: 0.5;
+              border-radius: 50%;
+            }
+
+            &:after {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 0px;
+              width: var(--default-dot-size);
+              height: var(--default-dot-size);
+              background-color: white;
+              opacity: 0.25;
+              border-radius: 50%;
+            }
+          }
+        }
+
+        &.ring {
+          width: var(--default-dot-circle);
+          height: var(--default-dot-circle);
+          border-radius: 50%;
+          animation: dotAnimation 1.5s linear infinite;
+          margin-left: auto;
+          margin-right: auto;
+
+          &:before {
+            width: 20px;
+            height: 20px;
+            content: "";
+            position: absolute;
+            background-color: transparent;
+            top: 40px;
+            left: 40px;
+            border-radius: 50%;
+            box-shadow: 0px -50px 0px 0px rgba(255, 255, 255, 1),
+              -36px -36px 0px -1px rgba(255, 255, 255, 0.875),
+              -50px 0px 0px -2px rgba(255, 255, 255, 0.75),
+              -36px 36px 0px -3px rgba(255, 255, 255, 0.625),
+              0px 50px 0px -4px rgba(255, 255, 255, 0.5),
+              36px 36px 0px -5px rgba(255, 255, 255, 0.375),
+              50px 0px 0px -6px rgba(255, 255, 255, 0.25),
+              36px -36px 0px -7px rgba(255, 255, 255, 0.125);
+          }
+        }
+      }
+
+      @include theme-generator();
+    }
+  }
+
+  .material-spinner {
+    animation: material-rotate 2s linear infinite;
+    z-index: 2;
+    width: var(--container-width);
+    height: var(--container-height);
+    
+    .path {
+      stroke: white;
+      stroke-linecap: round;
+      animation: dash 1.5s ease-in-out infinite;
+    }
+
+    @include theme-generator-material();
+  }
+  
+  @keyframes material-rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
+}

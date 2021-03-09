@@ -1,0 +1,155 @@
+div.tree-list-content {
+  @mixin theme-generator() {
+    @each $name, $value in $colors {
+      &.border-#{'' + $name} {
+        :before, :after, a { border-color: $value !important; }
+      }
+
+      &.color-#{'' + $name} {
+        li, a { color: $value; }
+      }
+    }
+  }
+
+  ul.tree, ul.tree-list, ol.tree, ol.tree-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    @include theme-generator();
+
+    li {
+      position: relative;
+      margin: 0;
+      padding: 3px 12px;
+      color: $font-color;
+      text-decoration: none;
+      font-size: $default-font-size;
+      line-height: 20px;
+
+      a {
+        position: relative;
+        color: $font-color;
+        text-decoration: none;
+        font-size: $default-font-size;
+        line-height: 20px;
+      }
+    }
+
+    ul, ol {
+      position: relative;
+      margin-left: 10px;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        border-left: 1px solid $font-color;
+      }
+
+      li {
+        &:before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: $default-font-size;
+          left: 0;
+          width: 8px;
+          height: 0;
+          border-top: 1px solid $font-color;
+        }
+
+        &:last-child {
+          &:before {
+            top: $default-font-size;
+            bottom: 0;
+            height: auto;
+            background: $color-nav-background;
+          }
+        }
+      }
+    }
+  }
+
+  ul.binary-tree {
+    position: relative;
+    @include theme-generator();
+
+    li {
+      position: relative;
+      padding: 20px 3px 0 3px;
+      float: #{$default-direction};
+      text-align: center;
+      list-style-type: none;
+
+      &:only-child {
+        padding-top: 0px;
+
+        &::after, &::before {
+          content: '';
+          display: none;
+        }
+      }
+
+      &:first-child {
+        &::before {
+          border: 0 none;
+        }
+      }
+
+      &:last-child {
+        &::before{
+          border-right: 1px solid $font-color;
+        }
+
+        &::after {
+          border: 0 none;
+        }
+      }
+
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 50%;
+        width: 50%;
+        height: 20px;
+        border-top: 1px solid $font-color;
+      }
+
+      &:after {
+        left: 50%;
+        right: auto;
+        border-left: 1px solid $font-color;
+      }
+
+      a {
+        display: inline-block;
+        padding: 1px 10px 3px 10px;
+        border: 1px solid $font-color;
+        text-decoration: none;
+        color: $font-color;
+        font-size: $default-font-size;
+      }
+    }
+
+    ul {
+      position: relative;
+      padding-top: 20px;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        border-left: 1px solid $font-color;
+        width: 0;
+        height: 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,150 @@
+tf-tab {
+  @mixin theme-generator() {
+    @each $name, $value in $colors {
+      &.theme-#{'' + $name} {
+        li.active {
+          a {
+            color: $value !important;
+
+            &:after {
+              background: $value !important;
+            }
+          }
+        }
+      }
+
+      &.icon-#{'' + $name} {
+        mat-icon {
+          color: $value;
+        }
+      }
+  
+      &.color-#{'' + $name} {
+        color: $value;
+      }
+    }
+  }
+
+  .tf-tab-control {
+    --link-padding: 15px;
+
+    @include theme-generator();
+
+    .tab-nav {
+      list-style: none;
+      padding: 0;
+      white-space: nowrap;
+      margin: 0;
+      overflow: auto;
+      box-shadow: inset 0 -1px 0 0 #eeeeee;
+      width: 100%;
+
+      &.align-right {
+        text-align: right;
+      }
+
+      &.align-center {
+        text-align: center;
+      }
+
+      &.justify {
+        display: flex;
+        
+        li {
+          width: 100%;
+          text-align: center;
+
+          a {
+            width: calc(100% - var(--link-padding) - var(--link-padding));
+          }
+        }
+      }
+
+      li {
+        display: inline-block;
+
+        a {
+          display: inline-block;
+          text-transform: uppercase;
+          position: relative;
+          width: fit-content;
+          transition: all 250ms ease-in-out;
+          font-weight: $weight-normal;
+          padding: var(--link-padding);
+
+          &:after {
+            content: "";
+            height: 1px;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            -webkit-transition: all;
+            -o-transition: all;
+            transition: all;
+            -webkit-transition-duration: 250ms;
+            transition-duration: 250ms;
+            -webkit-transform: scale(0);
+            -ms-transform: scale(0);
+            -o-transform: scale(0);
+            transform: scale(0);
+          }
+
+          .start-icon, .only-icon, .end-icon {
+            position: relative;
+            font-size: $icon-size-lead;
+            top: 5px;
+            width: $icon-size-lead;
+            height: $icon-size-lead;
+          }
+
+          .start-icon {
+            left: -5px;
+          }
+
+          .end-icon {
+            right: -5px;
+          }
+
+          .only-icon {
+            font-size: $icon-size-medium;
+            width: $icon-size-medium;
+            height: $icon-size-medium;
+          }
+ 
+        }
+
+        &.active {
+          a {
+            color: $color-red;
+            transition: all 250ms ease-in-out;
+
+            &:after {
+              -webkit-transform: scale(1);
+              -ms-transform: scale(1);
+              -o-transform: scale(1);
+              transform: scale(1);
+              background: $color-red;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .tf-tab-content {
+    padding: 20px 0;
+
+    &:empty {
+      padding: 0;
+    }
+
+    .tab-pane {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+}

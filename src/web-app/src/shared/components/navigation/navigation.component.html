@@ -1,0 +1,34 @@
+<header class="navigation">
+  <input
+    id="hamburger"
+    class="hamburger"
+    type="checkbox"
+  />
+  <label
+    for="hamburger"
+    class="hamburger"
+  ><i></i></label>
+  <nav class="navigation-menu">
+    <ul>
+      <li *ngFor="let navigationItem of navigationList">
+        <a (click)="switchRoute(navigationItem.to)">
+          <mat-icon
+            class="icon"
+            *ngIf="navigationItem.icon"
+          >{{ navigationItem.icon }}</mat-icon>
+          <label>{{ navigationItem.label }}</label>
+        </a>
+        <ul
+          class="second-nav"
+          *ngIf="navigationItem.children"
+        >
+          <li *ngFor="let childItem of navigationItem.children">
+            <a (click)="switchRoute(childItem.to)">
+              <label>{{ childItem.label }}</label>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>

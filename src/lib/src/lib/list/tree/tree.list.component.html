@@ -1,0 +1,60 @@
+<ng-container *ngIf="validation()">
+  <ng-container *ngTemplateOutlet="treeTemplate; context: { tree: list}"></ng-container>
+</ng-container>
+
+<!-- Root -->
+<ng-template
+  #treeTemplate
+  let-tree="tree"
+>
+  <div class="tree-list-content">
+    <ul
+      [class.tree]="!binary"
+      [class.binary-tree]="binary"
+      [ngClass]="getTheme()"
+    >
+      <li *ngFor="let branch of tree">
+        <a>{{ branch.display || branch.name }}</a>
+        <ng-container *ngIf="hasBranch(branch)">
+          <ng-container *ngTemplateOutlet="branchTemplate; context: { branch: branch.children || branch.branch || [] }">
+          </ng-container>
+        </ng-container>
+      </li>
+    </ul>
+  </div>
+</ng-template>
+<!-- Branch -->
+<ng-template
+  #branchTemplate
+  let-branch="branch"
+>
+  <ng-container *ngIf="!hasBranch(branch)">
+    <ul>
+      <li *ngFor="let leave of branch">
+        <a>{{ leave.display || leave.name }}</a>
+        <ng-container *ngIf="hasBranch(leave)">
+          <ng-container *ngTemplateOutlet="leaveTemplate; context: { leave: leave.children || leave.branch || [] }">
+          </ng-container>
+        </ng-container>
+      </li>
+    </ul>
+  </ng-container>
+</ng-template>
+<!-- Leave -->
+<ng-template
+  #leaveTemplate
+  let-leave="leave"
+>
+  <ng-container *ngIf="!hasBranch(leave)">
+    <ul>
+      <li *ngFor="let leaveBranch of leave">
+        <a>{{ leaveBranch.display || leaveBranch.name }}</a>
+        <ng-container *ngIf="hasBranch(leaveBranch)">
+          <ng-container
+            *ngTemplateOutlet="branchTemplate; context: { branch: leaveBranch.children || leaveBranch.branch || []}"
+          ></ng-container>
+        </ng-container>
+      </li>
+    </ul>
+  </ng-container>
+</ng-template>

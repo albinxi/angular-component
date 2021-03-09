@@ -1,0 +1,22 @@
+<div class="block-header sticky">
+  <h2> Material icon list, total {{iconSize}} icons
+    <small>Type to search what you need</small>
+  </h2>
+</div>
+
+<mat-card class="icon-card" *ngFor="let category of materialIconList">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>{{ category.title }}</h2>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="icon-list">
+      <div class="icon-list-item" *ngFor="let icon of category.icons">
+        <mat-icon>{{icon}}</mat-icon>
+        <span>{{icon}}</span>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

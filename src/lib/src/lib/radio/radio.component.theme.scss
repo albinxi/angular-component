@@ -1,0 +1,244 @@
+tf-radio {
+  --radio-size: 17px;
+  --radio-border: 2px;
+
+  --radio-icon-left: 5px;
+  --radio-icon-top: 4px;
+  --radio-icon-before-gap: 1px;
+
+  @mixin theme-generator() {
+    @each $name, $value in $colors {
+      &.theme-#{'' + $name} {
+        + .radio-label {
+          &::before, &::after {
+            border-color: $value;
+          }
+
+          &::after {
+            background: $value;
+          }
+        }
+
+        &:checked {
+          + .radio-label {
+            &::before, &::after {
+              border-color: $value;
+            }
+          }
+        }
+        
+        &:disabled {
+          &:checked {
+            + .radio-label {
+              &::before, &::after {
+                border-color: $value;
+              }
+            }
+          }
+        }
+      }
+
+      &.color-#{'' + $name} {    
+        + .radio-label {
+          &::after {
+            // theme-color will also generate the background color,
+            // but, the specific color property will overwrite the theme background
+            background: $value !important;
+          }
+        }
+      }
+    }
+  }
+
+  .tf-radio-container {
+    position: relative;
+    display: inline-block;
+    height: calc(var(--radio-size) + var(--radio-border) * 2);
+
+    .radio-input {
+      display: none;
+      width: calc(var(--radio-size) + var(--radio-border) * 2);
+      height: calc(var(--radio-size) + var(--radio-border) * 2);
+
+      @include theme-generator();
+
+      &:checked {
+        + .radio-label {
+          &::before, &::after {
+            border-color: $color-blue;
+          }
+
+          &::after {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+            -o-transform: scale(1);
+            transform: scale(1);
+          }
+        }
+      }
+
+      &:disabled {
+        pointer-events: none;
+
+        + .radio-label {
+          pointer-events: none;
+
+          &::before, &::after {
+            opacity: .7;
+          }
+
+          .label-text {
+            opacity: .5;
+          }
+        }
+      }
+
+      // checkbox label
+      + .radio-label {
+        height: calc(var(--radio-size) + var(--radio-border) * 2);
+        cursor: pointer;
+
+        &::before {
+          -webkit-transition: all;
+               -o-transition: all;
+                  transition: all;
+          -webkit-transition-duration: 250ms;
+          transition-duration: 250ms;
+          border-radius: 50%;
+
+          position: absolute;
+          content: '';
+          top: calc(-1 * var(--radio-icon-before-gap));
+          left: 0;
+          border: 2px solid $color-silver-gray;
+          width: var(--radio-size);
+          height: var(--radio-size);
+        }
+
+        &::after {
+          -webkit-transition: all;
+               -o-transition: all;
+                  transition: all;
+          -webkit-transition-duration: 250ms;
+          transition-duration: 250ms;
+
+          position: absolute;
+          opacity: 0;
+          filter: alpha(opacity=0);
+          -webkit-transform: scale(0);
+              -ms-transform: scale(0);
+               -o-transform: scale(0);
+                  transform: scale(0);
+          content: '';
+          
+          top: var(--radio-icon-top);
+          left: var(--radio-icon-left);
+          background: $color-blue;
+          border-radius: 50%;
+          width: 11px;
+          height: 11px;
+        }
+
+        // Middle state control
+        &.middle {
+          &::after {
+            content: '';
+            left: 4.5px;
+          }
+
+          &.done {
+            &::after {
+              content: '';
+              left: 3px;
+            }
+          }
+        }
+
+        &.right {
+          &::before {
+            right: 0;
+            left: 100%;
+          }
+
+          &::after {
+            left: calc(100% + var(--radio-icon-left));
+          }
+        }
+
+        &.top {
+          &::before {
+            left: calc(50% - var(--radio-size) / 2 - var(--radio-border) * 2);
+            top: calc(-100% + var(--radio-size) / 2);
+          }
+
+          &::after {
+            left: calc(50% - var(--radio-size) / 2 - var(--radio-border) * 2 + var(--radio-icon-left));
+            top: calc(-100% + var(--radio-size) / 2 + var(--radio-icon-before-gap) + var(--radio-icon-top));
+          }
+
+          &.align {
+            &::before {
+              left: 0;
+              top: calc(-100% + var(--radio-size) / 2);
+            }
+
+            &::after {
+              left: var(--radio-icon-left);
+              top: calc(-100% + var(--radio-size) / 2 + var(--radio-icon-before-gap) + var(--radio-icon-top));
+            }
+          }
+        }
+
+        &.bottom {
+          &::before {
+            left: calc(50% - var(--radio-size) / 2 - var(--radio-border) * 2);
+            top: calc(100% - var(--radio-size) / 2);
+          }
+
+          &::after {
+            left: calc(50% - var(--radio-size) / 2 - var(--radio-border) * 2 + var(--radio-icon-left));
+            top: calc(100% - var(--radio-size) / 2 + var(--radio-icon-before-gap) + var(--radio-icon-top));
+          }
+
+          &.align {
+            &::before {
+              left: 0;
+              top: calc(100% - var(--radio-size) / 2);
+            }
+
+            &::after {
+              left: var(--radio-icon-left);
+              top: calc(100% - var(--radio-size) / 2 + var(--radio-icon-before-gap) + var(--radio-icon-top));
+            }
+          }
+        }
+      }
+    }
+
+    .label-text {
+      height: calc(var(--radio-size) + var(--radio-border) * 2);
+      line-height: calc(var(--radio-size) + var(--radio-border) * 2);
+      user-select: none;
+
+      &.right {
+        padding-left: calc(var(--radio-size) + var(--radio-size) + var(--radio-border) * 2);
+      }
+
+      &.left {
+        padding-right: var(--radio-size);
+      }
+
+      &.bottom {
+        position: relative;
+        top: calc(var(--radio-size));
+      }
+
+      &.top {
+        position: relative;
+        bottom: calc(var(--radio-size));
+      }
+    }
+  }
+}

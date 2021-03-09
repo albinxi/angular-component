@@ -1,0 +1,227 @@
+<div class="block-header sticky">
+  <h2> Easy Class
+    <small>Global class for quick reference</small>
+  </h2>
+</div>
+
+<div class="grid split-2 gap-10 column-s-1">
+  <!-- Margin -->
+  <mat-card class="class-example margin-top-0">
+    <ng-container *ngFor="let eachItem of getEasyElementList('margin')">
+      <mat-card-header>
+        <mat-card-title>
+          <h2>Margin {{eachItem.big}} -- Size Range [0, ... 100]</h2>
+          <small>Quickly to apply Margin {{eachItem.big}} size via
+            <mark>.m{{eachItem.small}}-size</mark></small>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid split-2 gap-10 m-t-0 column-s-1">
+          <div *ngFor="let mar of boxConfig.range; index as marIndex">
+            <pre><code
+              class="language-css"
+              [innerHTML]="generateCSSSnippet(eachItem.key, boxConfig.range[marIndex], 'margin' + eachItem.full,
+                                boxConfig.range[marIndex], 'px;')"></code></pre>
+          </div>
+        </div>
+      </mat-card-content>
+    </ng-container>
+  </mat-card>
+  <!-- Padding -->
+  <mat-card class="class-example margin-top-0 margin-bottom-0">
+    <ng-container *ngFor="let eachItem of getEasyElementList('padding')">
+      <mat-card-header>
+        <mat-card-title>
+          <h2>Padding {{eachItem.big}} -- Size Range [0, ... 100]</h2>
+          <small>Quickly to apply Padding {{eachItem.big}} size via
+            <mark>.p{{eachItem.small}}-size</mark></small>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid split-2 gap-10 column-s-1">
+          <div *ngFor="let pad of boxConfig.range; index as padIndex">
+            <pre><code
+                  class="language-css"
+                  [innerHTML]="generateCSSSnippet(eachItem.key, boxConfig.range[padIndex], 'padding' + eachItem.full,
+                  boxConfig.range[padIndex], 'px;')"></code></pre>
+          </div>
+        </div>
+      </mat-card-content>
+    </ng-container>
+  </mat-card>
+</div>
+
+<div class="grid split-2 gap-10 column-s-1">
+  <!-- Gap -->
+  <mat-card class="class-example">
+    <ng-container *ngFor="let eachItem of getGapEasyElementList('gap')">
+      <mat-card-header>
+        <mat-card-title>
+          <h2>Block Gap {{eachItem.big}} -- Size Range [0, ... 100]</h2>
+          <small>Quickly to apply Gap {{eachItem.big}} size via <mark>.g{{eachItem.small}}-size</mark></small>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid split-2 gap-10 column-s-1">
+          <div *ngFor="let gapSet of boxConfig.range; index as gapIndex">
+            <pre><code
+              class="language-css"
+              [innerHTML]="generateCSSSnippet(eachItem.key, boxConfig.range[gapIndex], eachItem.full + 'gap',
+                  boxConfig.range[gapIndex], 'px;')"></code></pre>
+          </div>
+        </div>
+      </mat-card-content>
+    </ng-container>
+  </mat-card>
+  <!-- Text -->
+  <mat-card class="class-example">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>Text Alignment</h2>
+        <small>Quickly to apply text alignment</small>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <pre><code
+        class="language-css"
+        [innerHTML]="generateCSSSnippet('.t-a-c, .text-center', '', 'text-align', 'center', ';')"></code></pre>
+      <pre><code
+        class="language-css"
+        [innerHTML]="generateCSSSnippet('.t-a-l, .text-left', '', 'text-align', 'left', ';')"></code></pre>
+      <pre><code
+        class="language-css"
+        [innerHTML]="generateCSSSnippet('.t-a-r, .text-right', '', 'text-align', 'right', ';')"></code></pre>
+    </mat-card-content>
+    <!-- Capitalize -->
+    <mat-card-header>
+      <mat-card-title>
+        <h2>Text Capitalize</h2>
+        <small>Quickly to apply text capitalize</small>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <pre><code
+        class="language-css"
+        [innerHTML]="generateCSSSnippet('.t-w-c, .text-cap, .text-capitalize', '', 'text-transform', 'capitalize', ';')"></code></pre>
+    </mat-card-content>
+
+    <div class="grid margin-bottom-0">
+      <!-- Uppercase -->
+      <mat-card-header>
+        <mat-card-title>
+          <h2>Text Uppercase</h2>
+          <small>Quickly to apply text uppercase</small>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <pre><code
+          class="language-css"
+          [innerHTML]="generateCSSSnippet('.t-w-u, .text-upper, .text-uppercase', '', 'text-transform', 'uppercase', ';')"></code></pre>
+      </mat-card-content>
+      <!-- Lowercase -->
+      <mat-card-header>
+        <mat-card-title>
+          <h2>Text Lowercase</h2>
+          <small>Quickly to apply text lowercase</small>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <pre><code
+          class="language-css"
+          [innerHTML]="generateCSSSnippet('.t-w-l, .text-lower, .text-lowercase', '', 'text-transform', 'lowercase', ';')"></code></pre>
+      </mat-card-content>
+    </div>
+
+    <div class="grid">
+      <mat-card-header>
+        <mat-card-title>
+          <h2>Display</h2>
+          <small>Quickly to apply Display Style</small>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <pre><code
+          class="language-css"
+          [innerHTML]="generateCSSSnippet('.dis-block, .display-block', '', 'display', 'block', ';')"></code></pre>
+        <pre><code
+          class="language-css"
+          [innerHTML]="generateCSSSnippet('.dis-inline, .display-inline-block', '', 'display', 'inline-block', ';')"></code></pre>
+        <pre><code
+          class="language-css"
+          [innerHTML]="generateCSSSnippet('.dis-flex, .display-flex', '', 'display', 'flex', ';')"></code></pre>
+        <pre><code
+          class="language-css"
+          [innerHTML]="generateCSSSnippet('.dis-grid, .display-grid', '', 'display', 'grid', ';')"></code></pre>
+        <pre><code
+          class="language-css"
+          [innerHTML]="generateCSSSnippet('.dis-inline-flex, .display-inline-flex', '', 'display', 'inline-flex', ';')"></code></pre>
+        <pre><code
+          class="language-css"
+          [innerHTML]="generateCSSSnippet('.dis-none, .display-none', '', 'display', 'none', ';')"></code></pre>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>
+
+<div class="grid split-2 gap-10 column-s-1">
+  <mat-card class="class-example">
+    <div class="grid">
+      <mat-card-header>
+        <mat-card-title>
+          <h2>Position</h2>
+          <small>Quickly to apply Position Style</small>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid split-2 column-50-50 column-s-1">
+          <pre><code
+            class="language-css"
+            [innerHTML]="generateCSSSnippet('.position-relative', '', 'position', 'relative', ';')"></code></pre>
+          <pre><code
+            class="language-css"
+            [innerHTML]="generateCSSSnippet('.position-absolute', '', 'position', 'absolute', ';')"></code></pre>
+          <pre><code
+            class="language-css"
+            [innerHTML]="generateCSSSnippet('.position-fix', '', 'position', 'fix', ';')"></code></pre>
+          <pre><code
+            class="language-css"
+            [innerHTML]="generateCSSSnippet('.position-sticky', '', 'position', 'sticky', ';')"></code></pre>
+        </div>
+      </mat-card-content>
+    </div>
+    <div class="grid">
+      <mat-card-header>
+        <mat-card-title>
+          <h2>Overflow</h2>
+          <small>Quickly to apply Overflow Style</small>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid split-2 column-50-50 column-s-1">
+          <pre><code
+            class="language-css"
+            [innerHTML]="generateCSSSnippet('.overflow-hidden', '', 'overflow', 'hidden', ';')"></code></pre>
+          <pre><code
+            class="language-css"
+            [innerHTML]="generateCSSSnippet('.overflow-x-hidden', '', 'overflow-x', 'hidden', ';')"></code></pre>
+          <pre><code
+            class="language-css"
+            [innerHTML]="generateCSSSnippet('.overflow-y-hidden', '', 'overflow-y', 'hidden', ';')"></code></pre>
+          <pre><code
+            class="language-css"
+            [innerHTML]="generateCSSSnippet('.overflow-scroll', '', 'overflow', 'scroll', ';')"></code></pre>
+          <pre><code
+            class="language-css"
+            [innerHTML]="generateCSSSnippet('.overflow-x-scroll', '', 'overflow-x', 'scroll', ';')"></code></pre>
+          <pre><code
+            class="language-css"
+            [innerHTML]="generateCSSSnippet('.overflow-y-scroll', '', 'overflow-y', 'scroll', ';')"></code></pre>
+        </div>
+      </mat-card-content>
+    </div>
+  </mat-card>
+
+  <mat-card class="class-example">
+
+  </mat-card>
+</div>

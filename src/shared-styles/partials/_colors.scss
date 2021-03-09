@@ -1,0 +1,74 @@
+/** Themes Definition For quick apply global color change **/
+// Light blue
+$theme-blue-bg:               #0070cc;
+$theme-blue-nav:              #007ee6;
+$theme-blue-transparent:      rgba(255, 255, 255, 0.1);
+$theme-blue-hover:            #0062b3;
+$theme-blue-typography:       rgba(255, 255, 255, 0.902);
+
+// Dark blue
+$theme-dark-blue-bg:                    #0665a2;
+$theme-dark-blue-nav:                   #0474b9;
+$theme-dark-blue-nav-hover:             rgba(0, 0, 0, 0.1);
+$theme-dark-blue-transparent:           rgba(255, 255, 255, 0.1);
+$theme-dark-blue-hover:                 rgba(0, 0, 0, 0.1);
+$theme-dark-blue-typography:            rgba(255, 255, 255, 0.902);
+$theme-dark-blue-typography-selection:  #5f6f81;
+
+
+$theme-light-bg:              #252a34;
+$theme-light-nav:             #1a1d24;
+$theme-light-typography:      rgba(234, 234, 234, 1);
+$theme-light-border:          rgba(0, 0, 0, 0.12);
+
+
+/** Application Color Definition **/
+$color-background:              $theme-light-bg;
+$color-nav-background:          $theme-light-nav;
+$color-nav-hover:               $theme-dark-blue-nav-hover;
+$color-content-hover:           $theme-light-bg;
+$color-typography:              $theme-light-typography;
+$color-typography-selection:    $theme-dark-blue-typography-selection;
+$color-link-hover:              $theme-dark-blue-hover;
+$color-border:                  $theme-light-border;
+$font-color:                    $theme-dark-blue-typography;
+$color-font:                    $font-color;
+
+// Global Additional Color Definition
+$color-white:   rgb(255, 255, 255);
+$color-marking:   $color-nav-background !default;
+$color-highlight: $color-nav-background !default;
+
+$color-primary:     $color-background;
+$color-light:       $color-nav-background;
+$color-blue:        #2196f3; // rgb(33, 150, 243);
+$color-red:         #f44336; // rgb(244, 67, 54);
+$color-green:       #4caf50; // rgb(76, 175, 80);
+$color-amber:       #ffc107; // rgb(255, 193, 7);
+$color-teal:        #009688; // rgb(0, 150, 136);
+$color-black:       #000000; // rgb(0, 0, 0);
+$color-gray:        #607D8B; // rgb(96, 125, 139);
+$color-cyan:        #00bcd4; // rgb(0, 188, 212);
+$color-silver-gray: #AEAEAE; // rgb(174, 174, 174);
+$color-light-gray:  #e5e8e8; // rgb(229, 232, 232);
+$color-disabled:    $color-silver-gray;
+$color-transparent: transparent;
+
+/*  EXPORT APPLICATION THEME  */
+$app-background-color:                  $theme-light-bg;
+$app-navigation-background-color:       $theme-light-nav;
+
+$app-content-color:                     $theme-light-typography;
+$app-content-background-color: '';
+$app-content-border-color: '';
+$app-content-selection-color: '';
+
+$app-font-color:                        $theme-light-typography;
+$app-font-size: '';
+$app-font-weight: '';
+$app-font-weight-bold: '';
+
+$app-link-color: '';
+$app-link-hover-color: '';
+
+$app-layout-border-color: '';

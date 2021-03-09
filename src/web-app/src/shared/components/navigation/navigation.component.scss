@@ -1,0 +1,269 @@
+@import '../global.scss';
+
+.navigation-menu {
+  position: fixed;
+  height: $default-nav-size;
+  width: 100%;
+  font-size: .8em;
+  text-transform: uppercase;
+  background-color: $color-nav-background;
+  display: flex;
+  flex-direction: column;
+  transition: height 246ms .5s ease;
+  padding-top: $default-nav-size;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  z-index: 12;
+  border-right: solid 1px $color-border;
+
+  @media #{$small-only} {
+    height: $default-nav-size;
+    width: 100%;
+  }
+
+  @media #{$medium-up} {
+    height: 100%;
+    width: $default-nav-size;
+    transition: width 246ms .5s ease;
+  }
+
+  & > ul {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  & li {
+    font-weight: $weight-normal;
+    position: relative;
+
+    & .tag {
+      background-color: #005aa3;
+      background-color: rgba(0, 112, 204, 0.8);
+      color: $color-typography;
+      padding: 0 .5em;
+      border-radius: 2em;
+      margin-left: auto;
+      margin-right: .75em;
+    }
+
+    & a {
+      position: relative;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      color: $color-typography;
+      text-decoration: none;
+    }
+  }
+
+  .icon {
+    height: 30px;
+    width: 30px;
+    padding: 10px 15px;
+    color: $color-typography;
+    font-size: $icon-size-large !important;
+
+    & + label {
+      font-size: $font-size-lead;
+      padding: 0px;
+      cursor: pointer;
+    }
+  }
+}
+
+.navigation-menu li:hover, .navigation-menu expand:hover {
+  background-color: $color-nav-hover;
+}
+
+.icon {
+  display: inline-block;
+  width: 5vw;
+  height: 4vw;
+  font-size: $icon-size-large;
+}
+
+.navigation-menu .second-nav {
+  margin-left: 63px;
+  border-left: 1px solid $color-border;
+  overflow: hidden;
+
+  li {
+    color: $color-typography;
+    max-height: 100px;
+    transition: max-height .1s;
+
+    a {
+      text-transform: initial;
+      display: block;
+      color: inherit;
+      padding: .75em 10px;
+
+      label {
+        font-size: $font-size-normal;
+      }
+    }
+  }
+}
+
+@media (min-width: 650px) {
+  .navigation-menu .second-nav li {
+    max-height: 0px;
+    transition: max-height .5s .5s;
+  }
+}
+
+/** hamburger */
+input.hamburger {
+  display: none;
+}
+input.hamburger:checked ~ nav.navigation-menu {
+  height: 100vh;
+}
+
+@media (min-width: 650px) {
+  input.hamburger:checked ~ nav.navigation-menu {
+    width: 275px;
+  }
+}
+
+@media (min-width: 650px) {
+  input.hamburger:checked ~ nav.navigation-menu .second-nav > li {
+    max-height: 100px;
+  }
+  input.hamburger:checked ~ nav.navigation-menu .second-nav > li:nth-child(1) {
+    transition: max-height 0.5s 0.67s ease-in;
+  }
+  input.hamburger:checked ~ nav.navigation-menu .second-nav > li:nth-child(2) {
+    transition: max-height 0.5s 0.69s ease-in;
+  }
+  input.hamburger:checked ~ nav.navigation-menu .second-nav > li:nth-child(3) {
+    transition: max-height 0.5s 0.71s ease-in;
+  }
+  input.hamburger:checked ~ nav.navigation-menu .second-nav > li:nth-child(4) {
+    transition: max-height 0.5s 0.73s ease-in;
+  }
+  input.hamburger:checked ~ nav.navigation-menu .second-nav > li:nth-child(5) {
+    transition: max-height 0.5s 0.75s ease-in;
+  }
+  input.hamburger:checked ~ nav.navigation-menu .second-nav > li:nth-child(6) {
+    transition: max-height 0.5s 0.77s ease-in;
+  }
+  input.hamburger:checked ~ nav.navigation-menu .second-nav > li:nth-child(7) {
+    transition: max-height 0.5s 0.79s ease-in;
+  }
+  input.hamburger:checked ~ nav.navigation-menu .second-nav > li:nth-child(8) {
+    transition: max-height 0.5s 0.81s ease-in;
+  }
+  input.hamburger:checked ~ nav.navigation-menu .second-nav > li:nth-child(9) {
+    transition: max-height 0.5s 0.83s ease-in;
+  }
+  input.hamburger:checked ~ nav.navigation-menu .second-nav > li:nth-child(10) {
+    transition: max-height 0.5s 0.85s ease-in;
+  }
+}
+
+input.hamburger:checked ~ label > i {
+  background-color: transparent;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+input.hamburger:checked ~ label > i:before {
+  -webkit-transform: translate(-50%, -50%) rotate(45deg);
+          transform: translate(-50%, -50%) rotate(45deg);
+}
+
+input.hamburger:checked ~ label > i:after {
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+          transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+input.hamburger:checked ~ label close {
+  color: $color-typography;
+  width: 100%;
+}
+
+input.hamburger:checked ~ label open {
+  color: rgba(0, 0, 0, 0);
+  width: 0;
+}
+
+label.hamburger {
+  z-index: 9999;
+  position: relative;
+  display: block;
+  height: 24px;
+  width: 24px;
+}
+
+label.hamburger:hover {
+  cursor: pointer;
+}
+
+label.hamburger text close,
+label.hamburger text open {
+  text-transform: uppercase;
+  text-align: center;
+  position: absolute;
+  -webkit-transform: translateY(24px);
+          transform: translateY(24px);
+  text-align: center;
+  overflow: hidden;
+  transition: width .25s .35s, color .45s .35s;
+  font-size: 6px;
+}
+
+label.hamburger text close {
+  color: $color-typography;
+  right: 0;
+  width: 0;
+}
+
+label.hamburger text open {
+  color: $color-typography;
+  width: 100%;
+}
+
+label.hamburger > i {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  background-color: $color-typography;
+  pointer-events: auto;
+  transition-duration: .35s;
+  transition-delay: .35s;
+}
+
+label.hamburger > i:before, label.hamburger > i:after {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  left: 50%;
+  background-color: $color-typography;
+  content: "";
+  transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  transition: transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+
+label.hamburger > i:before {
+  -webkit-transform: translate(-50%, -7px);
+          transform: translate(-50%, -7px);
+}
+
+label.hamburger > i:after {
+  -webkit-transform: translate(-50%, 7px);
+          transform: translate(-50%, 7px);
+}
+
+label.hamburger {
+  position: fixed;
+  top: 14px;
+  left: 17px;
+}

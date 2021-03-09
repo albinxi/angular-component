@@ -1,0 +1,131 @@
+@import './_mixin.scss';
+
+/* Margin, Padding Reset */
+.n-p { padding: 0; }
+.no-padding { padding: 0 !important; }
+.n-m { margin: 0; }
+.no-margin { margin: 0 !important; }
+@include set-size('margin');
+@include set-size('margin-#{$default-direction}');
+@include set-size('margin-#{$opposite-direction}');
+@include set-size('margin-top');
+@include set-size('margin-bottom');
+@include set-size('padding');
+@include set-size('padding-#{$default-direction}');
+@include set-size('padding-#{$opposite-direction}');
+@include set-size('padding-top');
+@include set-size('padding-bottom');
+@include set-size('width');
+@include set-size('width-percent');
+@include set-size('height-percent');
+@include set-size('gap');
+
+/* Text Alignment */
+.text-#{$default-direction}, .t-a-l { text-align: #{$default-direction}; }
+.text-#{$opposite-direction}, .t-a-r { text-align: #{$opposite-direction}; }
+.text-center, .t-a-c { text-align: center;}
+/* Text Capitalize */
+.t-w-cap, .t-w-c, .t-t-c, .text-cap, .text-capitalize { text-transform: capitalize; }
+/* Text Uppercase */
+.t-w-u, .text-uppercase, .text-upper { text-transform: uppercase; }
+/* Text Lowercase */
+.t-w-l, .text-lowercase, .text-lower { text-transform: lowercase; }
+/* Hidden */
+.hide, .hidden, [hidden], [hide] { display: none; }
+/* Disabled */
+.disable, .disabled, [disable] { pointer-events: none; }
+
+// Displaying
+.dis-block, .display-block { display: block; }
+.dis-inline-block, .display-inline-block { display: inline-block; }
+.dis-flex, .display-flex { display: flex; }
+.dis-grid, .display-grid { display: grid; }
+.dis-inline-flex, .display-inline-flex { display: inline-flex; }
+.dis-none, .display-none { display: none; }
+
+// Position
+.position-relative { position: relative; }
+.position-absolute { position: absolute; }
+.position-fix { position: fixed; }
+.position-sticky { position: sticky; }
+
+// Overflow
+.overflow-hidden { overflow: hidden; }
+.overflow-x-hidden { overflow-x: hidden; }
+.overflow-y-hidden { overflow-y: hidden; }
+.overflow-scroll { overflow: scroll; }
+.overflow-x-scroll { overflow-x: scroll; }
+.overflow-y-scroll { overflow-y: scroll; }
+
+// Font Size
+
+/* Layout Ease */
+.flex, .flex-layout { display: flex; }
+// Flex
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.flex-column-reverse {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-row-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+// Grid
+.grid, .grid-layout {
+  display: grid;
+
+  @include justify-content();
+  
+  // two columns
+  &.split-2, & .split-2, &.column-2, & .column-2 {
+    grid-template-columns: repeat(2, 1fr);
+
+    @include grid-column(2, 10px);
+    @include grid-responsive();
+
+    &.auto, &.half, &.same { grid-template-columns: auto auto; }
+  }
+
+  // three columns
+  &.split-3, &.column-3 {
+    grid-template-columns: repeat(3, 1fr);
+
+    @include grid-column(3, 5px);
+    @include grid-responsive();
+
+    &.auto, &.same { grid-template-columns: auto auto auto; }
+  }
+
+  &.split-4, &.column-4 {
+    grid-template-columns: repeat(4, 1fr);
+    @include grid-responsive();
+    
+    &.auto, &.same { grid-template-columns: auto auto auto auto; }
+  }
+
+  &.split-5, &.column-5 {
+    grid-template-columns: repeat(5, 1fr);
+    @include grid-responsive();
+
+    &.auto, &.same { grid-template-columns: auto auto auto auto auto; }
+  }
+
+  &.row-2, & .row-2 {
+    grid-template-rows: auto auto;
+  }
+
+  &.row-3, & .row-3 {
+    grid-template-rows: auto auto auto;
+  }
+}
+
+

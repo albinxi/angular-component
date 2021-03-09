@@ -1,0 +1,14 @@
+@import 'partials/core';
+
+@import "~prismjs/plugins/toolbar/prism-toolbar.css";
+@import "~prismjs/themes/prism-okaidia";
+
+div.code-toolbar {
+  .toolbar-item button {
+    padding: 5px 15px 7px 15px !important;
+  }
+}
+
+pre[class*="language-"] {
+  background: $color-content-hover;
+}

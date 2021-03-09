@@ -1,0 +1,109 @@
+<div class="block-header sticky">
+  <h2> Layout Design via Easy Class
+    <small>Global class for quick reference</small>
+  </h2>
+</div>
+
+<mat-accordion class="layout-wrapper">
+  <mat-expansion-panel
+    hideToggle
+    [expanded]="true"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h2> Grid Layout </h2>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <mat-card-title>
+        <small>First, there defined the example block below for displaying</small>
+      </mat-card-title>
+      <section class="example-section p-t-10">
+        <div class="layout-example">
+          <small class="m-t-15 t-w-u display-block">width as 100%, height as 61.8
+            pixel</small>
+          <small>{{exampleGrid}}</small>
+        </div>
+      </section>
+
+      <tf-tab
+        [config]="config_tab_justify"
+        [templates]="[
+          twoColumnsGridTemplate,
+          threeColumnsGridTemplate,
+          rowGridTemplate
+        ]"
+      ></tf-tab>
+
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<ng-template #twoColumnsGridTemplate>
+  <!-- 2 Columns -->
+  <div>
+    <mat-card-header>
+      <mat-card-title>
+        <small>Possible range from column-[10, ... 90]-[90, ... 10]</small>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <section class="example-section">
+        <section
+          class="display-block m-t-20"
+          *ngFor="let rangeItem of exampleTwoColumnsRange"
+        >
+          <div class="grid split-2 auto start gap-20">
+            <small class="display-block p-t-10 p-b-10">{{twoColumnsString(rangeItem, 100-rangeItem)}}</small>
+          </div>
+          <div class="example-block grid-layout split-2 column-{{rangeItem}}-{{100-rangeItem}} g-10 space-around">
+            <div class="layout-example">
+              <div class="size-info grid content-center">{{ rangeItem }}%</div>
+            </div>
+            <div class="layout-example">
+              <div class="size-info grid content-center">{{100 - rangeItem}}%</div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </mat-card-content>
+  </div>
+</ng-template>
+<ng-template #threeColumnsGridTemplate>
+  <!-- 3 Columns -->
+  <div>
+    <mat-card-header>
+      <mat-card-title>
+        <small>Possible range from column-[10, ... 90]-[90, ... 10]</small>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <section class="example-section">
+        <section
+          class="display-block m-t-20"
+          *ngFor="let columnKey of getThreeColumnsKeys()"
+        >
+          <section>
+            <div class="grid split-2 auto start gap-20">
+              <small class="display-block p-t-10 p-b-10">{{threeColumnsString(columnKey)}}</small>
+            </div>
+            <div class="example-block grid-layout split-3 column-{{columnKey}} g-10 space-around">
+              <div class="layout-example">
+                <div class="size-info grid content-center">{{ columnKey.split('-')[0] }}%</div>
+              </div>
+              <div class="layout-example">
+                <div class="size-info grid content-center">{{ columnKey.split('-')[1] }}%</div>
+              </div>
+              <div class="layout-example">
+                <div class="size-info grid content-center">{{ columnKey.split('-')[2] }}%</div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </section>
+    </mat-card-content>
+  </div>
+</ng-template>
+<ng-template #rowGridTemplate>
+  asdf
+</ng-template>

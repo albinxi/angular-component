@@ -1,0 +1,70 @@
+@import '../global.scss';
+
+div.icon-list {
+  display: flex;
+  flex-flow: row wrap;
+
+  div.icon-list-item {
+    padding: 0;
+    display: flex;
+    height: 25px;
+    cursor: pointer;
+    align-items: center;
+    padding: 10px;
+
+    @media #{$wide-only} {
+      flex: 1 1 22%;
+      max-width: 22%;
+    }
+
+    @media #{$large-only} {
+      flex: 1 1 30%;
+      max-width: 30%;
+    }
+
+    @media #{$large-up} {
+      flex: 1 1 30%;
+      max-width: 30%;
+    }
+
+    @media #{$medium-only} {
+      flex: 1 1 46%;
+      max-width: 46%;
+    }
+
+    @media #{$small-only} {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+
+    &:hover {
+      background-color: $color-content-hover;
+    }
+  
+    & i {
+      font-size: $icon-size-lead;
+      margin-right: 10px;
+    }
+
+    &.colum-2 {
+      flex: 1 1 46%;
+      max-width: 46%;
+    }
+
+    &.colum-3 {
+      flex: 1 1 30%;
+      max-width: 30%;
+    }
+  
+    span {
+      font-size: $font-size-normal;
+      padding-left: 10px;
+      cursor: text;
+
+      &.example {
+        background: $color-nav-background;
+        color: $color-white;
+      }
+    }
+  }
+}

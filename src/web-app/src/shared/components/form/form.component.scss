@@ -1,0 +1,296 @@
+@import '../global.scss';
+
+$colors: (
+  red: $color-red,
+  blue: $color-blue,
+  amber: $color-amber,
+  teal: $color-teal,
+  cyan: $color-cyan,
+  white: $color-white,
+  black: $color-black,
+  primary: $color-primary,
+  green: $color-green,
+  success: $color-green,
+);
+
+tf-form {
+  section.example-section {
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+    min-height: 50px;
+    align-content: center;
+    align-items: center;
+
+    &.border {
+      border-bottom: 1px solid $color-silver-gray;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    div.example-label {
+      display: grid;
+      margin-left: 8px;
+      width: 100px;
+      min-width: 100px;
+      align-content: center;
+    }
+
+    div.example-content-row {
+      display: table-cell;
+      width: calc(100% - 100px);
+
+      > tf-button ~ tf-button {
+        margin-left: 10px;
+      }
+
+      &.button-row {
+        display: flex;
+      }
+
+      &.grid-row {
+        display: grid;
+        grid-column-gap: 20px;
+        grid-gap: 20px;
+        grid: none;
+
+        &.split-2 {
+          grid-template-columns: 48% 48%;
+        }
+
+        &.split-3 {
+          grid-template-columns: 30% 30% 30%;
+        }
+      }
+
+      .result {
+        display: inline-block;
+        text-transform: uppercase;
+
+        .highlight {
+          display: inline-block;
+          color: $color-red;
+          width: 30px;
+        }
+      }
+    }
+
+    .grid-row {
+      display: grid;
+      grid: repeat(5, fit-content(300px))/repeat(4, 1fr);
+      grid-template-areas:
+        "startIcon startIcon endIcon endIcon"
+        "bothIcon bothIcon bothIcon bothIcon"
+        "successIcon successIcon errorIcon errorIcon";
+      justify-content: space-between;
+      width: 100%;
+
+      div.start-icon {
+        position: relative;
+        grid-area: startIcon;
+        display: flex;
+      }
+
+      div.end-icon {
+        position: relative;
+        grid-area: endIcon;
+        display: flex;
+      }
+
+      div.both-icon {
+        position: relative;
+        grid-area: bothIcon;
+        display: flex;
+        padding: 15px 0;
+      }
+
+      div.success-icon {
+        position: relative;
+        grid-area: successIcon;
+        display: flex;
+      }
+
+      div.error-icon {
+        position: relative;
+        grid-area: errorIcon;
+        display: flex;
+      }
+    }
+
+    .vertical-diver {
+      display: inline-block;
+      width: 50px;
+    }
+  }
+
+  .mat-expansion-panel-header-description, .mat-expansion-panel-header-title {
+    flex-grow: unset !important;
+  }
+
+  .mat-expansion-panel-header-description {
+    align-items: center !important;
+  }
+
+  .mat-expansion-panel {
+    border-bottom: 1px solid $color-silver-gray;
+    border-radius: 0% !important;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+  label.example-label {
+    border-bottom: 1px solid;
+    line-height: 33px;
+  }
+}
+
+.theme-example {
+  --colorSchema: #FFFFFF;
+
+  &.image {
+    height: 600px;
+    width: 100%;
+  }
+
+  .image-container {
+    height: 100%;
+
+    img.theme-image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      // background-image: url('/assets/images/theme-example.jpg');
+      background-image: url('/assets/images/dragonball.jpg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    }
+  }
+
+  input[type="color"] { 
+    padding: 0;
+    border: none; 
+    position: absolute;
+    width: 100%; 
+    height: 100%;
+    mix-blend-mode: hue;
+    cursor: pointer;
+    pointer-events: none;
+  }
+
+  ::-webkit-color-swatch {
+    border: none;
+  }
+
+  ::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  ::-moz-color-swatch,
+  ::-moz-focus-inner {
+    border: none;
+  }
+
+  ::-moz-focus-inner {
+    padding: 0;
+  }
+
+  div.icon-list {
+    display: flex;
+    flex-flow: wrap;
+
+    @mixin theme-generator() {
+      @each $name, $value in $colors {
+        &.#{'' + $name} {
+          background-color: $value;
+        }
+      }
+    }
+
+    div.icon-list-item {
+      padding: 0;
+      display: flex;
+      height: fit-content;
+      cursor: pointer;
+      align-items: center;
+      padding: 10px;
+      flex-flow: row wrap;
+      border-radius: 3px;
+      margin: 6px;
+      justify-content: space-between;
+
+      @include theme-generator();
+
+      @media #{$wide-only} {
+        flex: 1 1 20%;
+        max-width: 20%;
+      }
+
+      @media #{$large-only} {
+        flex: 1 1 25%;
+        max-width: 30%;
+      }
+
+      @media #{$large-up} {
+        flex: 1 1 25%;
+        max-width: 30%;
+      }
+
+      @media #{$medium-only} {
+        flex: 1 1 35%;
+        max-width: 46%;
+      }
+
+      @media #{$small-only} {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+
+      &.colum-2 {
+        flex: 1 1 35%;
+        max-width: 46%;
+      }
+
+      &.colum-3 {
+        flex: 1 1 25%;
+        max-width: 30%;
+      }
+
+      div.show-detail {
+        display: block;
+
+        &.hex {
+          text-transform: uppercase;
+        }
+
+        &.reverse {
+          color: $color-black;
+        }
+      }
+    
+      span {
+        font-size: $font-size-normal;
+        padding-left: 10px;
+        cursor: text;
+        display: block;
+
+        &.example {
+          background: $color-nav-background;
+          color: $color-white;
+        }
+      }
+    }
+  }
+}
+
+label.label-text.warning {
+  color: red;
+  opacity: 1 !important;
+  text-decoration: underline;
+}
+
+.size-1of3 { grid-template-columns: 100px calc(100% - 120px) !important; }

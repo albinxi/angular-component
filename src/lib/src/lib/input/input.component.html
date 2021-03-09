@@ -1,0 +1,33 @@
+<div
+  class="tf-input"
+  [ngClass]="getTheme()"
+>
+  <mat-icon
+    class="start-icon"
+    *ngIf="startIcon"
+  >{{startIcon}}</mat-icon>
+  <input
+    [id]="uniqueId"
+    type="text"
+    class="tf-input"
+    [class.active]="value"
+    [class.start-icon-input]="!!startIcon"
+    [class.end-icon-input]="!!endIcon"
+    [placeholder]="placeholder || ' '"
+    [value]="value"
+  />
+  <label
+    *ngIf="showLabel"
+    [for]="uniqueId"
+    [attr.data-label]="label"
+  ></label>
+  <label
+    *ngIf="labelInfo"
+    class="infoLabel"
+    [ngClass]="getLabelStyle()"
+  >{{ infoText }}</label>
+  <mat-icon
+    class="end-icon"
+    *ngIf="endIcon"
+  >{{endIcon}}</mat-icon>
+</div>

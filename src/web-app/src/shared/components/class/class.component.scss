@@ -1,0 +1,65 @@
+@import '../global.scss';
+@import '../icon/icons.component.scss';
+
+tf-easy-example {
+  width: 100%;
+  height: 100%;
+
+  .icon-list-item {
+    flex: 1 1 45%;
+    max-width: 45% !important;
+
+    &:hover {
+      code {
+        background-color: $color-content-hover;
+      }
+    }
+
+    pre {
+      width: 100%;
+      display: flex;
+
+      span {
+        padding-left: 0 !important;
+      }
+    }
+  }
+
+  .grid {
+    .split-2 {
+      :first-of-type(mat-card) {
+        margin-top: 0;
+      }
+
+      mat-card + mat-card {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+
+.layout-example {
+  width: 100%;
+  height: 61.8px;
+  display: inline-block;
+  background: #252a34;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.layout-wrapper {
+  .example-block {
+    border: 1px solid #252a34;
+    padding: 10px;
+  }
+
+  .mat-accordion {
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .size-info {
+    height: 100%;
+  }
+}

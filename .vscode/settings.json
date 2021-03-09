@@ -1,0 +1,42 @@
+{
+    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
+    "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+    // Defines whether an open brace is put onto a new line for control blocks or not.
+    "typescript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+    // Defines whether an open brace is put onto a new line for functions or not.
+    "typescript.format.placeOpenBraceOnNewLineForFunctions": true,
+    "typescript.format.insertSpaceAfterTypeAssertion": false,
+    // Defines space handling after a binary operator.
+    "typescript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+    // Defines space handling after opening and before closing non-empty brackets.
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
+    // Defines space handling after opening and before closing non-empty parenthesis.
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+    // Defines space handling after opening and before closing template string braces.
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
+    // Defines space handling before function argument parentheses.
+    "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
+    "scss.completion.completePropertyWithSemicolon": true,
+    "scss.completion.triggerPropertyValueCompletion": true,
+    "scss.lint.argumentsInColorFunction": "error",
+    "scss.lint.emptyRules": "warning",
+    "scss.lint.float": "ignore",
+    "css.completion.completePropertyWithSemicolon": true,
+    "css.completion.triggerPropertyValueCompletion": true,
+    "css.lint.emptyRules": "warning",
+    "css.lint.float": "ignore",
+    "html.format.wrapAttributes": "force-expand-multiline",
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.rulers": [
+      130
+    ],
+    "editor.showUnused": true,
+    "files.insertFinalNewline": true,
+  }
+  // https://code.visualstudio.com/docs/getstarted/settings
+  
