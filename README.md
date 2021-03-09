@@ -1,4 +1,4 @@
-# Transfinder Web Toolkit for Angular 8
+# Web Toolkit for Angular 8
 
 ## Check local Environment via
 ```bash
@@ -9,7 +9,7 @@ Download nodejs from here [click here to download node v12](https://nodejs.org/d
 
 ## Install
 ```bash
-git clone http://bitbucket.hq.transfinder.com:7990/scm/~jie.xi/tf-toolkit.git
+git clone https://github.com/albinxi/angular-component.git
 npm install
 ```
 
